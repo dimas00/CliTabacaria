@@ -1,0 +1,15 @@
+footer{
+   border-top: 1px solid #601F99;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-top: 30vh;
+}
+
+footer h3{
+    margin-bottom: 1.2em;
+}
+
+
+

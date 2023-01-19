@@ -1,0 +1,67 @@
+
+
+<div class="container my-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+      
+      <h1>Cadastro de Produto</h1>
+      <form class="form" (ngSubmit)="submit()" [formGroup]="Produtoform" #formDir="ngForm">
+          
+          <div class="form_grupo">
+              <label for="nome" class="form_label">Nome</label>
+              <input type="text" name="nome" class="form_input" id="nome" placeholder="Nome" formControlName="title" required>
+          </div>
+          <div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+            <p>O titulo é obrigatório</p>
+          </div>
+          
+          <div class="form_grupo" >
+              <label for="e-mail" class="form_label">Preço</label>
+              <input type="number" name="email" class="form_input" id="email" placeholder="0.00" required>
+          </div>
+          
+          <div class="form_grupo">
+              <label for="quantidade" class="form_label">Quantidade</label>
+              <input type="number" name="quantidade" class="form_input" id="quantidade" placeholder="Quantidade" required>
+          </div>   
+               
+          <!-- <div class="form_grupo">
+              
+              <label for="estadocivil" class="text">Estado civil</label>
+              <select name="estadocivil" class="dropdown" required>
+                  
+                  <option selected disabled class="form_select_option" value="">Selecione</option>
+                  <option value="Solteiro" class="form_select_option">Solteiro(a)</option>
+                  <option value="Casado" class="form_select_option">Casado(a) </option>
+                  <option value="Divorciado" class="form_select_option">Divorciado(a)</option>                    
+                  <option value="Viúvo" class="form_select_option">Viúvo(a)</option>                    
+              
+              </select>
+          </div> -->
+         
+        
+          <div class="form_grupo">
+                                     
+              <div>                  
+                  <label for="Descricao" class="form_message_label"> Digite a descrição do produto:</label>
+                  <textarea  rows="3" class="form_input message_input" required></textarea>
+              </div>
+
+              <div class="form_grupo">
+                <label for="image" class="form_label">Imagem do produto: </label>
+                <input type="file" (change)="onFileSelected($event)">
+            </div>      
+
+
+              <div class="submit">
+
+                <input type="hidden" name="acao" value="enviar">
+                <button class="voltar" type="submit" name="voltar"  >Voltar</button>
+
+                <input type="hidden" name="acao" value="enviar">
+                <button type="submit" name="Submit" class="submit_btn" >Cadastrar</button>
+              
+              </div>
+     
+      
+    </div>
+  
