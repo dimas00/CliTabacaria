@@ -21,10 +21,10 @@ export class LoginService {
     return false;
   }
 
-  createAccont(accont: any){
-    return new Promise((resolve) =>{
-      resolve(true);
-    });
+  async createAccont(usuario: Usuario){
+    const result = await this.http.post<any>(`${environment.baseApiUrl}/usuario/cadastrar`, usuario).toPromise();
+
+    return result;
   }
 
   getAuthorizationToken(){
@@ -36,12 +36,35 @@ export class LoginService {
     const decoded: any = jwtDecode(token);
 
     if(decoded.exp === undefined){
-      return null;
+      return false;
     }
 
     const date = new Date(0);
     date.setUTCSeconds(decoded.exp);
     return date;
+  }
+
+  isTokenExpired(token?: string): boolean{
+    if(!token){
+      return true;
+    }
+    const date = this.getTokenExpirationDate(token);
+    if(date === undefined){
+      return false;
+    }
+
+    return !(date.valueof() > new Date().valueOf());
+  }
+
+  isUserLoggedIn() {
+    const token = this.getAuthorizationToken();
+    if (!token) {
+      return false;
+    } else if (this.isTokenExpired(token)) {
+      return false;
+    }
+
+    return true;
   }
 
   

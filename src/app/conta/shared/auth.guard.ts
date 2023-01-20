@@ -17,10 +17,25 @@ export class AuthGuard implements CanActivate {
       if(token){
         return true;
       }else{
-        this.router.navigate(['login'])
+        // this.router.navigate(['login'])
         return false;
       }
     return true;
   }
+
+  // constructor(private router: Router, private loginService: LoginService){ }
+
+  // canActivate(
+  //   next: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot):  boolean  {
+
+  //     if (this.loginService.isUserLoggedIn()) {
+  //       return true;
+  //     }else{
+  //       this.router.navigate(['login'])
+  //       return false;
+  //     }
+  //   return true;
+  // }
   
 }

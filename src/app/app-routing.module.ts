@@ -14,18 +14,19 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
-    {path: '', component : CardComponent},
-    {path: 'produtos', component: CadastroProdutoComponent},
-    {path: 'cadastroProduto', component: CadastroProdutoComponent }
-  ],
-    canActivate: [AuthGuard]
+      // { path: '', redirectTo: 'home', pathMatch: 'full' },
+      // { path: '', component: CardComponent },
+      { path: 'produtos', component: CadastroProdutoComponent },
+      { path: 'cadastroProduto', component: CadastroProdutoComponent }
+    ],
+    // canActivate: [AuthGuard]
   },
   {
-    path: '', component:AutenticacaoComponent,
-    children:[
-      {path: '', redirectTo: 'login', pathMatch: 'full'},
-      {path: 'login', component: LoginComponent},
-      {path: 'criar-conta', component: CriarContaComponent}
+    path: 'auth', component: AutenticacaoComponent,
+    children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
+      { path: 'criar-conta', component: CriarContaComponent }
     ]
   }
 ];
