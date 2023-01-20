@@ -2,6 +2,7 @@ import { environment } from './../../environments/environment';
 import { Usuario } from './../components/conta/login/usuario';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import jwtDecode, * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,23 @@ export class LoginService {
       resolve(true);
     });
   }
+
+  getAuthorizationToken(){
+    const token = window.localStorage.getItem('token');
+    return token;
+  }
+
+  getTokenExpirationDate(token: string): any {
+    const decoded: any = jwtDecode(token);
+
+    if(decoded.exp === undefined){
+      return null;
+    }
+
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  
 }

@@ -1,8 +1,9 @@
 import { LoginService } from './services/login.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import{HttpClientModule} from '@angular/common/http'
+import{HttpBackend, HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {  HttpInterceptorProviders } from './http-interceptors'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,7 +49,8 @@ import { CriarContaComponent } from './components/conta/criar-conta/criar-conta.
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginService],
+  providers: [LoginService, HttpInterceptorProviders],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
