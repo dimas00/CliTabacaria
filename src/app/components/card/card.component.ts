@@ -16,11 +16,9 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.produtoService.getProdutos().subscribe((items => {
-      const data = items;
-
-      data.map((items) => {
-      });
-      this.produtos = data;
+      
+      this.produtos = items;
+      
     }));
 
   

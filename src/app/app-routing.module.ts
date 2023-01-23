@@ -17,7 +17,7 @@ const routes: Routes = [
       { path: 'cadastroProduto', component: CadastroProdutoComponent, canActivate: [AuthGuard] },
       {path: 'login', component: AutenticacaoComponent},
 
-      { path: 'criar-conta', component: CriarContaComponent }
+      { path: 'nconta', component: CriarContaComponent }
     ]    
  
     

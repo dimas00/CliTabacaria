@@ -4,46 +4,35 @@
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       
       <h1>Cadastro de Produto</h1>
-      <form class="form" (ngSubmit)="submit()" [formGroup]="Produtoform" #formDir="ngForm">
+      <form class="form" (ngSubmit)="Submit()" [formGroup]="produtoform" #formDir="ngForm">
           
           <div class="form_grupo">
               <label for="nome" class="form_label">Nome</label>
-              <input type="text" name="nome" class="form_input" id="nome" placeholder="Nome" formControlName="title" required>
+              <input type="text" name="nome" class="form_input" id="nome" placeholder="Nome" formControlName="nomeprod" required>
           </div>
-          <div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+          <div *ngIf="nomeprod.invalid && formDir.submitted" class="validation-error">
             <p>O titulo é obrigatório</p>
           </div>
           
           <div class="form_grupo" >
-              <label for="e-mail" class="form_label">Preço</label>
-              <input type="number" name="email" class="form_input" id="email" placeholder="0.00" required>
+              <label for="preco" class="form_label">Preço</label>
+              <input type="number" name="preco" class="form_input" id="preco" placeholder="0.00" formControlName="preco" required>
+          </div>
+          <div *ngIf="preco.invalid && formDir.submitted" class="validation-error">
+            <p>O preço é obrigatório</p>
           </div>
           
           <div class="form_grupo">
               <label for="quantidade" class="form_label">Quantidade</label>
-              <input type="number" name="quantidade" class="form_input" id="quantidade" placeholder="Quantidade" required>
+              <input type="number" name="quantidade" class="form_input" id="quantidade" placeholder="Quantidade" formControlName="quantidade" required>
           </div>   
                
-          <!-- <div class="form_grupo">
-              
-              <label for="estadocivil" class="text">Estado civil</label>
-              <select name="estadocivil" class="dropdown" required>
-                  
-                  <option selected disabled class="form_select_option" value="">Selecione</option>
-                  <option value="Solteiro" class="form_select_option">Solteiro(a)</option>
-                  <option value="Casado" class="form_select_option">Casado(a) </option>
-                  <option value="Divorciado" class="form_select_option">Divorciado(a)</option>                    
-                  <option value="Viúvo" class="form_select_option">Viúvo(a)</option>                    
-              
-              </select>
-          </div> -->
-         
         
           <div class="form_grupo">
                                      
               <div>                  
                   <label for="Descricao" class="form_message_label"> Digite a descrição do produto:</label>
-                  <textarea  rows="3" class="form_input message_input" required></textarea>
+                  <textarea  rows="3" class="form_input message_input" formControlName="descricao" required></textarea>
               </div>
 
               <div class="form_grupo">
@@ -58,7 +47,7 @@
                 <button class="voltar" type="submit" name="voltar"  >Voltar</button>
 
                 <input type="hidden" name="acao" value="enviar">
-                <button type="submit" name="Submit" class="submit_btn" >Cadastrar</button>
+                <button type="submit" name="Submit" class="submit_btn" [disabled]="formDir.form.invalid" >Cadastrar</button>
               
               </div>
      

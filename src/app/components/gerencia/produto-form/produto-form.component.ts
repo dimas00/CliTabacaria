@@ -1,6 +1,8 @@
-import { Produto } from './../../../Produto';
+import { Produto } from 'src/app/Produto';
+import { Router } from '@angular/router';
+import { ProdutoService } from 'src/app/services/produto.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-produto-form',
@@ -13,44 +15,58 @@ export class ProdutoFormComponent implements OnInit {
 
   @Input() btnText!: string;
 
-  Produtoform!: FormGroup;
+  produtoform!: FormGroup;
+
+  produto: Produto = new Produto();
 
 
-  constructor() { }
+  constructor(private produtoService: ProdutoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.Produtoform = new FormGroup({
-      id: new FormControl(''),
-      title: new FormControl(''),
-      descricao: new FormControl(''),
-      quantidade: new FormControl(''),
-      preco: new FormControl(''),
-      image: new FormControl('')
+
+    this.produtoform = new FormGroup({
+      nomeprod: new FormControl(null, [Validators.required]),
+      descricao: new FormControl(null, [Validators.required]),
+      quantidade: new FormControl(null, [Validators.required]),
+      preco: new FormControl(null, [Validators.required]),
       
     })
   }
 
-  get title(){
-    return this.Produtoform.get('title')!;
+  async Submit(){
+    try{
+      const resul = await this.produtoService.cadastroProduto(this.produtoform.value);
+      console.log(resul);
+      this.router.navigate(['']);
+
+    }catch(error){
+      console.log(error);
+    }
+  }
+
+  get nomeprod(){
+    return this.produtoform.get('nomeprod')!;
   }
 
   get descricao(){
-    return this.Produtoform.get('descricao')!;
+    return this.produtoform.get('descricao')!;
+  }
+
+  get preco(){
+    return this.produtoform.get('preco')!;
+  }
+
+  get quantidade(){
+    return this.produtoform.get('quantidade')!;
   }
 
   onFileSelected(event: any){
 
     const file: File = event.target.files[0];
 
-    this.Produtoform.patchValue({ Image: file });
+    this.produtoform.patchValue({ Image: file });
   }
 
-  submit(){
-    if(this.Produtoform.invalid){
-      return;
-    }
-    console.log(this.Produtoform.value);
-    this.onSubmit.emit(this.Produtoform.value);
-  }
+
 
 }
