@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ProdutoService {
 
+  
+
   private baseApiUrl = environment.baseApiUrl
   private apiUrl = `${this.baseApiUrl}`
 
@@ -19,6 +21,17 @@ export class ProdutoService {
   createProduto(formData: FormData): Observable<FormData>{
     return this.http.post<FormData>(this.apiUrl, formData)
   }
+
+  async cadastroProduto(produto: Produto){
+    const result = await this.http.post<any>(`${environment.baseApiUrl}/produto`, produto).toPromise();
+
+    return result;
+  }
+
+  getProdutos(): Observable<Produto[]>{
+    return this.http.get<Produto[]>(`${environment.baseApiUrl}/produto`);
+  }
+
 
 
 }

@@ -20,7 +20,7 @@ export class CadastroProdutoComponent implements OnInit {
 
     const formData = new FormData();
 
-    formData.append('title', produto.nome);
+    formData.append('title', produto.nomeprod);
     formData.append('descricao', produto.descricao);
     
     if(produto.image){

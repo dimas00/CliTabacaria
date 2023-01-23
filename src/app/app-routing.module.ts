@@ -11,26 +11,16 @@ import { CriarContaComponent } from './components/conta/criar-conta/criar-conta.
 
 const routes: Routes = [
 
-  {
-    path: '', component: HomeComponent,
-    children: [
-      // { path: '', redirectTo: 'home', pathMatch: 'full' },
-      // { path: '', component: CardComponent },
-      { path: 'produtos', component: CadastroProdutoComponent },
-      { path: 'cadastroProduto', component: CadastroProdutoComponent }
-    ],
-    // canActivate: [AuthGuard]
-  },
-  {
-    path: 'auth', component: AutenticacaoComponent,
-    children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'criar-conta', component: CriarContaComponent }
-    ]
-  }
-];
+      { path: '', component: HomeComponent},
 
+      { path: 'compras', component: CadastroProdutoComponent },
+      { path: 'cadastroProduto', component: CadastroProdutoComponent, canActivate: [AuthGuard] },
+      {path: 'login', component: AutenticacaoComponent},
+
+      { path: 'criar-conta', component: CriarContaComponent }
+    ]    
+ 
+    
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
