@@ -22,7 +22,7 @@ export class ProdutoService {
     return this.http.post<FormData>(this.apiUrl, formData)
   }
 
-  async cadastroProduto(produto: Produto){
+  async cadastroProduto(produto: Produto) {
     const result = await this.http.post<any>(`${environment.baseApiUrl}/produto`, produto).toPromise();
 
     return result;

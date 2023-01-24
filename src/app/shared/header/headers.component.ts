@@ -1,3 +1,4 @@
+import { CardComponent } from './../../components/card/card.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadersComponent implements OnInit {
 
+  searchTerm: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  search(e : Event): void{
+
+    
+  }
+   
+
 
 }

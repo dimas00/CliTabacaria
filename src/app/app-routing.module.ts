@@ -1,3 +1,4 @@
+import { EdicaoProdutoFormComponent } from './components/gerencia/edicao-produto-form/edicao-produto-form.component';
 import { AuthGuard } from './conta/shared/auth.guard';
 import { CadastroProdutoComponent } from './components/pages/cadastro-produto/cadastro-produto.component';
 import { ProdutoFormComponent } from './components/gerencia/produto-form/produto-form.component';
@@ -16,6 +17,8 @@ const routes: Routes = [
       { path: 'compras', component: CadastroProdutoComponent },
       { path: 'cadastroProduto', component: CadastroProdutoComponent, canActivate: [AuthGuard] },
       {path: 'login', component: AutenticacaoComponent},
+      {path: 'editar', component: EdicaoProdutoFormComponent},
+      
 
       { path: 'nconta', component: CriarContaComponent }
     ]    

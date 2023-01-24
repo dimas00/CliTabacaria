@@ -1,19 +1,15 @@
-import { Produto } from 'src/app/Produto';
-import { Router } from '@angular/router';
-import { ProdutoService } from 'src/app/services/produto.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Produto } from 'src/app/Produto';
+import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
-  selector: 'app-produto-form',
-  templateUrl: './produto-form.component.html',
-  styleUrls: ['./produto-form.component.css']
+  selector: 'app-edicao-produto-form',
+  templateUrl: './edicao-produto-form.component.html',
+  styleUrls: ['./edicao-produto-form.component.css']
 })
-export class ProdutoFormComponent implements OnInit {
-
-  @Output() onSubmit = new EventEmitter<Produto>;
-
-  @Input() btnText!: string;
+export class EdicaoProdutoFormComponent implements OnInit {
 
   produtoform!: FormGroup;
 
@@ -70,7 +66,4 @@ export class ProdutoFormComponent implements OnInit {
 
     this.produtoform.patchValue({ Image: file });
   }
-
-
-
 }
