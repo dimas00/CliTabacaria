@@ -11,6 +11,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProdutoFormComponent implements OnInit {
 
+  @Input() produtoData: Produto | null = null;
+
   @Output() onSubmit = new EventEmitter<Produto>;
 
   @Input() btnText!: string;
@@ -24,10 +26,10 @@ export class ProdutoFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.produtoform = new FormGroup({
-      nomeprod: new FormControl(null, [Validators.required]),
-      descricao: new FormControl(null, [Validators.required]),
-      quantidade: new FormControl(null, [Validators.required]),
-      preco: new FormControl(null, [Validators.required]),
+      nomeprod: new FormControl(this.produtoData ? this.produtoData.nomeprod : '', [Validators.required]),
+      descricao: new FormControl(this.produtoData ? this.produtoData.descricao : '', [Validators.required]),
+      quantidade: new FormControl(this.produtoData ? this.produtoData.quantidade : '', [Validators.required]),
+      preco: new FormControl(this.produtoData ? this.produtoData.preco : '', [Validators.required]),
       
     })
   }

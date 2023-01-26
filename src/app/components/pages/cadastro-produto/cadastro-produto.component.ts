@@ -9,7 +9,8 @@ import { ProdutoService } from 'src/app/services/produto.service';
   styleUrls: ['./cadastro-produto.component.css']
 })
 export class CadastroProdutoComponent implements OnInit {
-  btnText = 'compartilhar'
+  
+  btnText: string = 'Cadastrar Produto';
 
   constructor(private produtoService: ProdutoService) { }
 

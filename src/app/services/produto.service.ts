@@ -32,6 +32,11 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${environment.baseApiUrl}/produto`);
   }
 
+  getProduto(id_produto: number): Observable<Produto>{
+    return this.http.get<Produto>(`${environment.baseApiUrl}/produto/get/${id_produto}`);
+  }
+
+
 
 
 }

@@ -3,7 +3,7 @@
 <div class="container my-5">
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       
-      <h1>Cadastro de Produto</h1>
+      <h1>{{btnText}}</h1>
       <form class="form" (ngSubmit)="Submit()" [formGroup]="produtoform" #formDir="ngForm">
           
           <div class="form_grupo">
@@ -44,7 +44,7 @@
               <div class="submit">
 
                 <input type="hidden" name="acao" value="enviar">
-                <button class="voltar" type="submit" name="voltar"  >Voltar</button>
+                <button class="voltar" type="submit" name="voltar" routerLink="" >Voltar</button>
 
                 <input type="hidden" name="acao" value="enviar">
                 <button type="submit" name="Submit" class="submit_btn" [disabled]="formDir.form.invalid" >Cadastrar</button>
@@ -54,5 +54,5 @@
       
     </div>
 
-    <app-card></app-card>
+  
   

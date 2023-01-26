@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { Produto } from 'src/app/Produto';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -11,20 +11,22 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class EdicaoProdutoFormComponent implements OnInit {
 
+  
+  btnText: string = 'Editar Produto';
   produtoform!: FormGroup;
 
-  produto: Produto = new Produto();
+  produto!: Produto;
 
-  constructor(private produtoService: ProdutoService, private router: Router) { }
+  constructor(private produtoService: ProdutoService, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.produtoform = new FormGroup({
-      nomeprod: new FormControl(null, [Validators.required]),
-      descricao: new FormControl(null, [Validators.required]),
-      quantidade: new FormControl(null, [Validators.required]),
-      preco: new FormControl(null, [Validators.required]),
-      
+   
+    const id_produto = Number(this.router.snapshot.paramMap.get("id_produto"))
+    
+    this.produtoService.getProduto(id_produto).subscribe((item) =>{
+      this.produto = item;
+      console.log(this.produto);
     })
   }
 

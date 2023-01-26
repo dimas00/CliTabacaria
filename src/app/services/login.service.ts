@@ -13,7 +13,7 @@ export class LoginService {
 
   async login( user: Usuario){
     const resul = await this.http.post<any>(`${environment.baseApiUrl}/login`, user).toPromise();
-    console.log(user);
+    console.log(resul.Usuario);
     if(resul && resul.token) {
       window.localStorage.setItem('token', resul.token);
       return true;

@@ -21,7 +21,7 @@ import { ContaComponent } from './components/conta/conta.component';
 import { AutenticacaoComponent } from './components/pages/autenticacao/autenticacao.component';
 import { CardComponent } from './components/card/card.component';
 import { CriarContaComponent } from './components/conta/criar-conta/criar-conta.component';
-import { EdicaoProdutoFormComponent } from './components/gerencia/edicao-produto-form/edicao-produto-form.component';
+import { EdicaoProdutoFormComponent } from './components/pages/edit-produto/edicao-produto-form.component';
 
 
 @NgModule({
