@@ -28,7 +28,8 @@ export class CadastroProdutoComponent implements OnInit {
       formData.append('image', produto.image);
     }
 
-     this.produtoService.createProduto(formData).subscribe();
+     this.produtoService.cadastroProduto(produto);
+    
 
   }
 

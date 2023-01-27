@@ -36,6 +36,12 @@ export class ProdutoService {
     return this.http.get<Produto>(`${environment.baseApiUrl}/produto/get/${id_produto}`);
   }
 
+  async editarProduto(produto: Produto) {
+    const result = await this.http.post<any>(`${environment.baseApiUrl}/produto/editar/`, produto).toPromise();
+
+    return result;
+  }
+
 
 
 

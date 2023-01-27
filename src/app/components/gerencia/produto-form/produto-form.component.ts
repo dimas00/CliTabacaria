@@ -40,11 +40,16 @@ export class ProdutoFormComponent implements OnInit {
 
   async Submit(){
     try{
-      const resul = await this.produtoService.cadastroProduto(this.produtoform.value);
-      console.log(resul);
-      this.produtoform.reset;
-      this.refresh();
 
+      this.onSubmit.emit(this.produtoform.value);
+      
+
+      // const resul = await this.produtoService.cadastroProduto(this.produtoform.value);
+      // console.log(resul);
+      // this.produtoform.reset;
+      // this.refresh();
+
+     
     }catch(error){
       console.log(error);
     }

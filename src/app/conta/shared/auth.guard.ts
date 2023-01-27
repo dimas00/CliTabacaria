@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot):  boolean  {
 
       const token = window.localStorage.getItem('token');
+      
       if(token){
         return true;
       }else{

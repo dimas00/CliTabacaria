@@ -15,6 +15,7 @@ export class LoginService {
     const resul = await this.http.post<any>(`${environment.baseApiUrl}/login`, user).toPromise();
     console.log(resul.Usuario);
     if(resul && resul.token) {
+      window.localStorage.setItem('usuario', JSON.stringify(resul));
       window.localStorage.setItem('token', resul.token);
       return true;
     }
