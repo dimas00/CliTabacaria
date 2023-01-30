@@ -1,3 +1,5 @@
+import { AuthInterceptorService } from './http-interceptors/auth-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginService } from './services/login.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,7 +9,6 @@ import {  HttpInterceptorProviders } from './http-interceptors'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProdutoComponent } from './model/produto/produto.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeadersComponent } from './shared/header/headers.component';
@@ -27,7 +28,6 @@ import { EdicaoProdutoFormComponent } from './components/pages/edit-produto/edic
 @NgModule({
   declarations: [
     AppComponent,
-    ProdutoComponent,
     PagesComponent,
     FooterComponent,
     HeadersComponent,
@@ -51,7 +51,11 @@ import { EdicaoProdutoFormComponent } from './components/pages/edit-produto/edic
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginService, HttpInterceptorProviders],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
+  
+  // [LoginService, HttpInterceptorProviders],
   
   bootstrap: [AppComponent]
 })

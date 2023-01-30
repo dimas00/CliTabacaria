@@ -33,6 +33,8 @@ export class LoginService {
     return token;
   }
 
+  usuarioAtivo = () => JSON.parse(<string>localStorage.getItem('usuario'));
+
   getTokenExpirationDate(token: string): any {
     const decoded: any = jwtDecode(token);
 

@@ -29,7 +29,7 @@ export class ProdutoService {
   }
 
   getProdutos(): Observable<Produto[]>{
-    return this.http.get<Produto[]>(`${environment.baseApiUrl}/produto`);
+    return this.http.get<Produto[]>(`${environment.baseApiUrl}/produto/listar`);
   }
 
   getProduto(id_produto: number): Observable<Produto>{
@@ -37,7 +37,7 @@ export class ProdutoService {
   }
 
   async editarProduto(produto: Produto) {
-    const result = await this.http.post<any>(`${environment.baseApiUrl}/produto/editar/`, produto).toPromise();
+    const result = await this.http.put<any>(`${environment.baseApiUrl}/produto/editar/${produto.id_produto}`, produto).toPromise();
 
     return result;
   }

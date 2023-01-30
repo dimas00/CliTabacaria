@@ -1,5 +1,5 @@
 import { Produto } from 'src/app/Produto';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProdutoService } from 'src/app/services/produto.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +11,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProdutoFormComponent implements OnInit {
 
+  @Input() link! : string;
+
   @Input() produtoData: Produto | null = null;
 
   @Output() onSubmit = new EventEmitter<Produto>;
@@ -21,7 +23,7 @@ export class ProdutoFormComponent implements OnInit {
 
   produto: Produto = new Produto();
 
-  constructor(private produtoService: ProdutoService, private router: Router) { }
+  constructor(private produtoService: ProdutoService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -30,7 +32,7 @@ export class ProdutoFormComponent implements OnInit {
       descricao: new FormControl(this.produtoData ? this.produtoData.descricao : '', [Validators.required]),
       quantidade: new FormControl(this.produtoData ? this.produtoData.quantidade : '', [Validators.required]),
       preco: new FormControl(this.produtoData ? this.produtoData.preco : '', [Validators.required]),
-      
+      id_produto: new FormControl(this.produtoData?.id_produto ? this.produtoData?.id_produto : null)
     })
   }
 
@@ -42,6 +44,7 @@ export class ProdutoFormComponent implements OnInit {
     try{
 
       this.onSubmit.emit(this.produtoform.value);
+      
       
 
       // const resul = await this.produtoService.cadastroProduto(this.produtoform.value);

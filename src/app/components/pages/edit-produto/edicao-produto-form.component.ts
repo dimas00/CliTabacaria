@@ -11,7 +11,7 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class EdicaoProdutoFormComponent implements OnInit {
 
-  
+  link: string = '/cadastroProduto';
   btnText: string = 'Editar Produto';
   produtoform!: FormGroup;
 
@@ -35,12 +35,8 @@ export class EdicaoProdutoFormComponent implements OnInit {
 
   async editar(event: any){
     try{
-       const resul = await this.produtoService.editarProduto(this.produtoform.value);
-       console.log(resul);
-       this.produtoform.reset;
-       this.refresh();
-
-      console.log('funcionando')
+       this.produtoService.editarProduto(event);
+        console.log('funcionando')
 
     }catch(error){
       console.log(error);
