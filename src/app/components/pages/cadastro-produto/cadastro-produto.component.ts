@@ -1,3 +1,4 @@
+import { Router, RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/Produto';
 
@@ -12,7 +13,7 @@ export class CadastroProdutoComponent implements OnInit {
   
   btnText: string = 'Cadastrar Produto';
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor(private produtoService: ProdutoService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +30,8 @@ export class CadastroProdutoComponent implements OnInit {
     }
 
      this.produtoService.cadastroProduto(produto);
+     this.router.navigate(['cadastroProduto']);
+     
     
 
   }

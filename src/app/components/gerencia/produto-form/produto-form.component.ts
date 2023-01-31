@@ -44,6 +44,7 @@ export class ProdutoFormComponent implements OnInit {
     try{
 
       this.onSubmit.emit(this.produtoform.value);
+      this.refresh();
       
       
 

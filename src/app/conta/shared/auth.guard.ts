@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -7,14 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
   
-  constructor(private router: Router){ }
+  constructor(private router: Router, private loginService: LoginService){ }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):  boolean  {
 
-      const token = window.localStorage.getItem('token');
-      
+      const token: any = window.localStorage.getItem('token');
+      // const espirado = this.loginService.isTokenExpired(token);
       if(token){
         return true;
       }else{

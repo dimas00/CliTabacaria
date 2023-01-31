@@ -23,24 +23,29 @@ export class AuthInterceptorService implements HttpInterceptor {
       request = req.clone({
         headers: req.headers.set('Authorization', `Bearer ${usuarioAtivo.token}`)
       });
+      return next.handle(request);
     }
 
-    return next.handle(request)
-    .pipe(
-      catchError(this.handleError)
-    );
-
-  }
-
-  private handleError (error: HttpErrorResponse){
-    if(error.error instanceof ErrorEvent){
-      console.error('Ocorreu um erro:', error.error.message);
-    }else{
-      console.error(
-        `Código do erro ${error.status}, ` +
-        `Erro: ${JSON.stringify(error.error)}`);
+    else {
+      return next.handle(req);
     }
-    return throwError('Ocorreu um erro, tente novamente');
+
+  //   return next.handle(request)
+  //   .pipe(
+  //     catchError(this.handleError)
+  //   );
+
+  // }
+
+  // private handleError (error: HttpErrorResponse){
+  //   if(error.error instanceof ErrorEvent){
+  //     console.error('Ocorreu um erro:', error.error.message);
+  //   }else{
+  //     console.error(
+  //       `Código do erro ${error.status}, ` +
+  //       `Erro: ${JSON.stringify(error.error)}`);
+  //   }
+     // return throwError('Ocorreu um erro, tente novamente');
   }
   
 }

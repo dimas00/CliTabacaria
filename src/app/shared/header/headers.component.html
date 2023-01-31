@@ -12,7 +12,7 @@
   
   <ul class="links" >
     <li><a routerLink="" ><img src="assets/img/home.png" alt=""></a></li>
-    <li><a routerLink="/login" >Login</a></li>
+    <li *ngIf="!getUser()" ><a routerLink="/login" >Login</a></li>
     <li><a  routerLink="/cadastroProduto" >Gerenciar Produtos</a></li>
     <li><a href="" >Compras</a></li>
   </ul>

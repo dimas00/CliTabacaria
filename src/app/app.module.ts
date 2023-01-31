@@ -1,7 +1,8 @@
+import { ErrorHandlerService } from './services/error-handler.service';
 import { AuthInterceptorService } from './http-interceptors/auth-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginService } from './services/login.service';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import{HttpBackend, HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -52,7 +53,8 @@ import { EdicaoProdutoFormComponent } from './components/pages/edit-produto/edic
     ReactiveFormsModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    { provide: ErrorHandler, useClass: ErrorHandlerService }
   ],
   
   // [LoginService, HttpInterceptorProviders],

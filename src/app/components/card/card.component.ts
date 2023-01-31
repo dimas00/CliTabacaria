@@ -1,3 +1,5 @@
+import { Usuario } from './../conta/login/usuario';
+import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Produto } from 'src/app/Produto';
@@ -10,19 +12,25 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class CardComponent implements OnInit {
 
+  usuarioLogado: Usuario = this.loginService.usuarioAtivo();
   produtos: Produto[] = [];
   searchProdutos: Produto[] = [];
+  // admin: boolean = this.usuarioLogado.permissoes.includes('admin');
 
 
-  constructor(private router: Router, private produtoService: ProdutoService) { }
+  constructor(private router: Router, private produtoService: ProdutoService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.produtoService.getProdutos().subscribe((items => {
-      
+  
       this.produtos = items;
       
     }));
   
+  }
+  
+  isAdmin(): boolean {
+    return this.usuarioLogado.permissoes.includes('admin');
   }
 
   // search(e : Event): void{

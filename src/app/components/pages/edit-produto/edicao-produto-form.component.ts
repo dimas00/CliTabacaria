@@ -17,11 +17,11 @@ export class EdicaoProdutoFormComponent implements OnInit {
 
   produto!: Produto;
 
-  constructor(private produtoService: ProdutoService, private router: ActivatedRoute) { }
+  constructor(private produtoService: ProdutoService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
 
-    const id_produto = Number(this.router.snapshot.paramMap.get("id_produto"))
+    const id_produto = Number(this.route.snapshot.paramMap.get("id_produto"))
     
     this.produtoService.getProduto(id_produto).subscribe((item) =>{
       this.produto = item;
@@ -36,7 +36,7 @@ export class EdicaoProdutoFormComponent implements OnInit {
   async editar(event: any){
     try{
        this.produtoService.editarProduto(event);
-        console.log('funcionando')
+       this.router.navigate(['cadastroProduto']);
 
     }catch(error){
       console.log(error);

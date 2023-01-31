@@ -28,6 +28,10 @@ export class LoginService {
     return result;
   }
 
+  getUserLogado() {
+   return window.localStorage.getItem('usuario');
+  }
+
   getAuthorizationToken(){
     const token = window.localStorage.getItem('token');
     return token;
@@ -47,7 +51,7 @@ export class LoginService {
     return date;
   }
 
-  isTokenExpired(token?: string): boolean{
+  isTokenExpired(token: string): boolean{
     if(!token){
       return true;
     }
@@ -70,5 +74,9 @@ export class LoginService {
     return true;
   }
 
+  logout = (): void => {
+    window.localStorage.removeItem('usuario');
+    window.localStorage.removeItem('token');
   
+  }
 }
