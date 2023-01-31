@@ -28,6 +28,12 @@ export class HeadersComponent implements OnInit {
     
     }    
   }
+
+  public sair()  {
+    
+    return this.loginService.logout();
+      
+  }
    
 
 

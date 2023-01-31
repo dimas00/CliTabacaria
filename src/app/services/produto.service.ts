@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Produto } from '../Produto';
 
 import { environment } from 'src/environments/environment';
+import { Usuario } from '../components/conta/login/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,8 @@ export class ProdutoService {
   }
 
   async cadastroProduto(produto: Produto) {
-    const result = await this.http.post<any>(`${environment.baseApiUrl}/produto`, produto).toPromise();
 
+    const result = await this.http.post<any>(`${environment.baseApiUrl}/produto`, produto).toPromise();
     return result;
   }
 
@@ -41,6 +42,14 @@ export class ProdutoService {
 
     return result;
   }
+
+  async comprar(produto: Produto, usuario: Usuario) {
+    const result = await this.http.put<any>(`${environment.baseApiUrl}/compra/comprar/${produto.id_produto}`, produto ).toPromise();
+
+    return result;
+  }
+
+
 
 
 

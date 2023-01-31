@@ -3,13 +3,14 @@ import { Usuario } from './../components/conta/login/usuario';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import jwtDecode, * as jwt_decode from 'jwt-decode';
+import { Route, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: Router) { }
 
   async login( user: Usuario){
     const resul = await this.http.post<any>(`${environment.baseApiUrl}/login`, user).toPromise();
@@ -77,6 +78,8 @@ export class LoginService {
   logout = (): void => {
     window.localStorage.removeItem('usuario');
     window.localStorage.removeItem('token');
+    this.route.navigate(['']);
+    
   
   }
 }

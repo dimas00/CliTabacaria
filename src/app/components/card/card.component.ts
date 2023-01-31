@@ -21,8 +21,9 @@ export class CardComponent implements OnInit {
   constructor(private router: Router, private produtoService: ProdutoService, private loginService: LoginService) { }
 
   ngOnInit(): void {
+
     this.produtoService.getProdutos().subscribe((items => {
-  
+      console.log(items)
       this.produtos = items;
       
     }));
@@ -32,6 +33,8 @@ export class CardComponent implements OnInit {
   isAdmin(): boolean {
     return this.usuarioLogado.permissoes.includes('admin');
   }
+
+  
 
   // search(e : Event): void{
 
