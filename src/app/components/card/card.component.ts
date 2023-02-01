@@ -2,7 +2,7 @@ import { Usuario } from './../conta/login/usuario';
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Produto } from 'src/app/Produto';
+import { Produto } from 'src/app/model/Produto';
 import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({

@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadersComponent implements OnInit {
 
+  usuarioLogado: Usuario = this.loginService.usuarioAtivo();
   searchTerm: string = '';
 
   constructor(private loginService: LoginService) { }
@@ -27,6 +28,10 @@ export class HeadersComponent implements OnInit {
       return  JSON.parse(t);
     
     }    
+  }
+
+  isAdmin(): boolean {
+    return this.usuarioLogado.permissoes.includes('admin');
   }
 
   public sair()  {

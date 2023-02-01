@@ -1,4 +1,4 @@
-import { Produto } from 'src/app/Produto';
+import { Produto } from 'src/app/model/Produto';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProdutoService } from 'src/app/services/produto.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
