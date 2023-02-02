@@ -6,6 +6,8 @@ import { Produto } from '../model/Produto';
 
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../components/conta/login/usuario';
+import { Compras } from '../model/compra';
+import { CompraForm } from '../model/compraForm';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +35,17 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${environment.baseApiUrl}/produto/listar`);
   }
 
+
+  getAllProdutos(): Observable<Produto[]>{
+    return this.http.get<Produto[]>(`${environment.baseApiUrl}/produto/listAll`);
+  }
+
   getProduto(id_produto: number): Observable<Produto>{
     return this.http.get<Produto>(`${environment.baseApiUrl}/produto/get/${id_produto}`);
   }
 
-  getCompras(id_usuario: number): Observable<Produto[]>{
-    return this.http.get<Produto[]>(`${environment.baseApiUrl}/produto/listar/${id_usuario}`);
+  getCompras(id_usuario: number): Observable<Compras>{
+    return this.http.get<Compras>(`${environment.baseApiUrl}/compra/getcompra/${id_usuario}`);
   }
 
   async editarProduto(produto: Produto) {
@@ -47,15 +54,14 @@ export class ProdutoService {
     return result;
   }
 
-  async comprar(produto: Produto, usuario: Usuario) {
-    const result = await this.http.post<any>(`${environment.baseApiUrl}/compra/comprar/${produto.id_produto}`, produto,  ).toPromise();
+  async comprar(compra: CompraForm) {
+    const result = await this.http.post<any>(`${environment.baseApiUrl}/compra/comprar/`, compra).toPromise();
 
-    return result;
   }
 
-
-
-
+  desativar(id_produto: number): any{
+    return this.http.get<Compras>(`${environment.baseApiUrl}/produto/desativar/${id_produto}`).subscribe();
+  }
 
 
 }

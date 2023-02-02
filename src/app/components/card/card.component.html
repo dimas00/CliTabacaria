@@ -2,14 +2,15 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div *ngFor="let produto of produtos" class="col">
       <div class="card shadow-sm">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        <img width="100%"  src="assets/img/Exemplo.png" >
 
         <div class="card-body">
           <p class="card-text">{{produto.nomeprod}}</p>
           <p class="card-text">{{produto.descricao}}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-primary">Comprar</button>
+              <button *ngIf="rota" (click)="comprar(usuarioLogado.id_usuario)"  type="button" class="btn btn-primary">Comprar</button>
+              <button *ngIf="!rota && produto.ativo" (click)="desativar(produto.id_produto)"  type="button" class="btn btn-danger">Desativar</button>
               
               <button *ngIf="usuarioLogado && isAdmin()" 
                 type="button" class="btn btn-sm btn-outline-secondary"
@@ -18,7 +19,7 @@
               </button>
               <!-- *ngIf -->
             </div>
-            <!-- <small class="text-muted">9 mins</small> -->
+             <small class="text-muted">quantidade: {{produto.quantidade}}</small> 
           </div>
         </div>
       </div>

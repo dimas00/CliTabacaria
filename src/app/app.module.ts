@@ -24,7 +24,7 @@ import { AutenticacaoComponent } from './components/pages/autenticacao/autentica
 import { CardComponent } from './components/card/card.component';
 import { CriarContaComponent } from './components/conta/criar-conta/criar-conta.component';
 import { EdicaoProdutoFormComponent } from './components/pages/edit-produto/edicao-produto-form.component';
-import { ComprasComponent } from './components/conta/compras/compras.component';
+import { VisualizarComprasComponent } from './components/pages/visualizar-compras/visualizar-compras.component';
 
 
 @NgModule({
@@ -43,7 +43,8 @@ import { ComprasComponent } from './components/conta/compras/compras.component';
     CardComponent,
     CriarContaComponent,
     EdicaoProdutoFormComponent,
-    ComprasComponent,
+
+    VisualizarComprasComponent,
    
   ],
   imports: [

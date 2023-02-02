@@ -2,11 +2,12 @@ import { Produto } from 'src/app/model/Produto';
 import { Usuario } from './../components/conta/login/usuario';
 
 
-export class Compra{
+export class Compras{
+    data!: any[];
     id_compra!: number;
-    data!: Date;
-    usuario!: Usuario;
-    produto!: Produto;
+    nome!: string;
+    nomeprod!: string;
     quantidade!: number;
+    descricao!: string;
 
 }
