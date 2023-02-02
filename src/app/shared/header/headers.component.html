@@ -6,16 +6,16 @@
 
  <form>
   
-  <input  placeholder="Pesquise por um produto..." class="input" name="text" type="text"  > 
+  <input  placeholder="Pesquise por um produto..." class="input" name="text" type="text" (input)="search($event)" > 
 
  </form> 
   
   <ul class="links" >
-    <li><a routerLink="" ><img src="assets/img/home.png" alt=""></a></li>
+    <li *ngIf="rota != 'home'"><a  routerLink="" >home</a></li>
     <li *ngIf="!getUser()" ><a routerLink="/login" >Login</a></li>
     <li *ngIf="getUser()" ><a  (click)="sair()" >Sair</a></li>
     <li *ngIf="usuarioLogado && isAdmin()"><a  routerLink="/cadastroProduto" >Gerenciar Produtos</a></li>
-    <li *ngIf="usuarioLogado" ><a routerLink="compras/{{usuarioLogado.id_usuario}}" >Compras</a></li>
+    <li *ngIf="usuarioLogado" ><a routerLink="/compras/{{usuarioLogado.id_usuario}}" >Compras</a></li>
   </ul>
 
 </nav>

@@ -18,8 +18,6 @@ const routes: Routes = [
       { path: 'cadastroProduto', component: CadastroProdutoComponent, canActivate: [AuthGuard] },
       {path: 'login', component: AutenticacaoComponent},
       {path: 'editar/:id_produto', component: EdicaoProdutoFormComponent, canActivate: [AuthGuard]},
-      
-
       { path: 'nconta', component: CriarContaComponent }
     ]    
  

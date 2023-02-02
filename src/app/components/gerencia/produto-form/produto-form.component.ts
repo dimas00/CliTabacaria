@@ -45,13 +45,6 @@ export class ProdutoFormComponent implements OnInit {
 
       this.onSubmit.emit(this.produtoform.value);
       this.refresh();
-      
-      
-
-      // const resul = await this.produtoService.cadastroProduto(this.produtoform.value);
-      // console.log(resul);
-      // this.produtoform.reset;
-      // this.refresh();
 
      
     }catch(error){

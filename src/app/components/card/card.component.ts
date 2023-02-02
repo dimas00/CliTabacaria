@@ -13,7 +13,7 @@ import { CompraForm } from 'src/app/model/compraForm';
 })
 export class CardComponent implements OnInit {
 
-  @Input() rota: boolean = true;
+  @Input() rota: string = "";
 
   usuarioLogado: Usuario = this.loginService.usuarioAtivo();
   produtos: Produto[] = [];
@@ -27,7 +27,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.rota = true){
+    if(this.rota == 'home'){
       this.produtoService.getProdutos().subscribe((items => {
       console.log(items , "so get msm");
       this.produtos = items;
@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
     }));
     }
     
-    if(this.rota = false){
+    if(this.rota == 'gerencia'){
       this.produtoService.getAllProdutos().subscribe((items => {
         console.log(items, "getAll");
         this.produtos = items;
@@ -50,29 +50,50 @@ export class CardComponent implements OnInit {
     return this.usuarioLogado.permissoes.includes('admin');
   }
 
-  public comprar( id_usuario: number ){
-    // this.compra.produto.id_produto =  id_produto;
-    this.compra.usuario.id_usuario = id_usuario;
-    console.log(this.compra);
-    // this.produtoService.comprar(this.compra);
+  public comprar( id_produto: number ){
+    if(this.usuarioLogado){
+      this.compra.produto = new Produto();
+    this.compra.produto.id_produto =  id_produto;
+    this.compra.produto.quantidade = 1;
+    console.log(this.compra.produto.id_produto);
+    this.compra.usuario = new Usuario();
+    this.compra.usuario.id_usuario = this.usuarioLogado.id_usuario;
+    const resul = this.produtoService.comprar(this.compra);
+    this.ngOnInit();
+    console.log(resul);
+    alert("compra efetuada com sucesso")
+    }else{
+      this.router.navigate(['login']);
+    }
+    
+    
 
   }
 
   desativar(id_produto: any){
     const resul = this.produtoService.desativar(id_produto);
     console.log(resul);
+    this.ngOnInit();
+  }
+
+  
+  ativar(id_produto: any){
+    const resul = this.produtoService.ativar(id_produto);
+    console.log(resul);
+    this.ngOnInit();
+    
   }
 
   
 
-  // search(e : Event): void{
+   search(e : Event): void{
 
-  //   const target = e.target as HTMLInputElement
-  //   const value = target.value
+     const target = e.target as HTMLInputElement
+      const value = target.value
 
-  //   this.searchProdutos = this.produtos.filter(searchProdutos =>
-  //     searchProdutos.nomeprod.toLowerCase().includes(value)
-  //   );
-  // }
+     this.searchProdutos = this.produtos.filter(searchProdutos =>
+       searchProdutos.nomeprod.toLowerCase().includes(value)
+    );
+   }
 
 }

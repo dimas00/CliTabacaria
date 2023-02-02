@@ -63,5 +63,9 @@ export class ProdutoService {
     return this.http.get<Compras>(`${environment.baseApiUrl}/produto/desativar/${id_produto}`).subscribe();
   }
 
+  ativar(id_produto: number): any{
+    return this.http.get<Compras>(`${environment.baseApiUrl}/produto/ativar/${id_produto}`).subscribe();
+  }
+
 
 }

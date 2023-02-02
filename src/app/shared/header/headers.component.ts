@@ -1,7 +1,7 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from './../../components/conta/login/usuario';
 import { LoginService } from './../../services/login.service';
-import { CardComponent } from './../../components/card/card.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-headers',
@@ -10,16 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadersComponent implements OnInit {
 
+  @Input() rota: string = "";
   usuarioLogado: Usuario = this.loginService.usuarioAtivo();
   searchTerm: string = '';
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
   search(e : Event): void{
-
+    const target = e.target as HTMLInputElement
+      const value = target.value
   }
 
   public getUser() {
@@ -34,9 +36,11 @@ export class HeadersComponent implements OnInit {
     return this.usuarioLogado.permissoes.includes('admin');
   }
 
-  public sair()  {
+   sair(): void  {
     
     return this.loginService.logout();
+    
+    
       
   }
    
