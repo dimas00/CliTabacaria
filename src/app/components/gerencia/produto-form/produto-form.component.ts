@@ -32,6 +32,7 @@ export class ProdutoFormComponent implements OnInit {
       descricao: new FormControl(this.produtoData ? this.produtoData.descricao : '', [Validators.required]),
       quantidade: new FormControl(this.produtoData ? this.produtoData.quantidade : '', [Validators.required]),
       preco: new FormControl(this.produtoData ? this.produtoData.preco : '', [Validators.required]),
+      image: new FormControl(this.produtoData ? this.produtoData.image : '', ),
       id_produto: new FormControl(this.produtoData?.id_produto ? this.produtoData?.id_produto : null)
     })
   }
@@ -72,7 +73,9 @@ export class ProdutoFormComponent implements OnInit {
 
     const file: File = event.target.files[0];
 
-    this.produtoform.patchValue({ Image: file });
+    this.produtoform.patchValue({ image: file });
+    console.log(this.produtoform.value);
+  //  this.produto.image = null;
   }
 
 

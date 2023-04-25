@@ -18,18 +18,15 @@ export class CadastroProdutoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async creatHandler(produto: Produto){
+   cadastrarProduto(produto: Produto){
 
     const formData = new FormData();
-
-    formData.append('title', produto.nomeprod);
-    formData.append('descricao', produto.descricao);
+    formData.append('file', produto.image);
+    produto.image = null;
+    formData.append('produto',JSON.stringify(produto));
     
-    if(produto.image){
-      formData.append('image', produto.image);
-    }
 
-     this.produtoService.cadastroProduto(produto);
+     this.produtoService.cadastroProduto(formData);
      this.router.navigate(['cadastroProduto']);
      
     

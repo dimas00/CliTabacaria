@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { Usuario } from '../components/conta/login/usuario';
 import { Compras } from '../model/compra';
 import { CompraForm } from '../model/compraForm';
+import { FormatWidth } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +26,13 @@ export class ProdutoService {
     return this.http.post<FormData>(this.apiUrl, formData)
   }
 
-  async cadastroProduto(produto: Produto) {
+  async cadastroProduto(formData: FormData) {
 
-    const result = await this.http.post<any>(`${environment.baseApiUrl}/produto`, produto).toPromise();
+   // formData.append('file', image);
+   // formData.append('produto',JSON.stringify(produto));
+    //
+
+    const result = await this.http.post<any>(`${environment.baseApiUrl}/produto`, formData).toPromise();
     return result;
   }
 
@@ -50,7 +55,7 @@ export class ProdutoService {
 
   async editarProduto(produto: Produto) {
     const result = await this.http.put<any>(`${environment.baseApiUrl}/produto/editar/${produto.id_produto}`, produto).toPromise();
-
+    console.log(produto)
     return result;
   }
 

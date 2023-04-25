@@ -4,6 +4,7 @@ export class Produto{
     quantidade!: number;
     descricao!: string;
     preco!: number;
-    image!: string;
+    image!: File ;
     ativo!: boolean;
+    img!: string;
 }

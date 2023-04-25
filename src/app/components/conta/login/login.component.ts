@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
         
       }catch (error){
+        alert("Usuario ou sernha incorreto");
         console.log(error);
       }
     }
