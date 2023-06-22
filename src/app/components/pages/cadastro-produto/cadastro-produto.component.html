@@ -1,5 +1,5 @@
-<app-headers></app-headers>
-<app-produto-form [btnText]="btnText" (onSubmit)="cadastrarProduto($event)" ></app-produto-form>
+<app-headers [rota]="'gerencia'"></app-headers>
 <div class="container">
+<app-produto-form btnText="Cadastro Produto"  (onSubmit)="cadastrarProduto($event)"></app-produto-form>
 <app-card [rota]="'gerencia'" ></app-card>
 </div>

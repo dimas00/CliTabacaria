@@ -1,0 +1,46 @@
+<app-headers></app-headers>
+<div class="container">
+
+  <div class="menu">
+    <h1>Minha conta: </h1>
+    <li class="ativo" >Perfil </li>
+    <li routerLink="/visualizarCartoes">Cartões</li>
+    <li routerLink="/visualizarEnderecos">Endereço</li>
+    <li>Trocar senha</li>   
+  </div>
+
+  <div class="area-form">
+    
+    <div class="title">
+      <h1>Meu perfil</h1>
+      <h2>Gereciar as informações da conta</h2>
+    </div>
+    
+    <div class="info-perfil">
+  
+        <div class="form">
+          <form>
+          <table>
+            <tr> <td> <label>Nome de usuario: </label></td>   <td> <input type="text" name=""value="{{usuario.nome
+            }}"></td></tr>
+            <tr> <td> <label>CPF: </label></td>   <td> {{usuario.cpf}}</td></tr>
+            <tr> <td> <label>E-mail: </label></td>   <td><input type="text" name="" value="{{usuario.email}}"></td></tr>
+            <tr> <td> <label>Telefone: </label></td>   <td><input type="tel" name="" value="{{usuario.telefone}}"></td></tr>
+            <tr> <td> <label>Data nascimento: </label></td>   <td><input type="text"  name="" value="{{usuario.data_cadastro}}"></td></tr>
+             <input type="submit" name="" id="">
+          </table >
+
+          </form>
+      </div>
+      <div class="img-form">
+        <div class="img-form-img">
+          <img >
+          <input type="file" value="selecione" >
+        </div>
+        
+      </div>
+    
+      
+    </div>
+  </div>
+</div>

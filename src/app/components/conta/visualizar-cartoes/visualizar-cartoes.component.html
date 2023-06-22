@@ -1,0 +1,35 @@
+<app-headers></app-headers>
+<div class="container">
+
+  <div class="menu">
+    <h1>Minha conta: </h1>
+    <li routerLink="/editarConta/{{usuarioLogado.id_usuario}}"> Perfil  </li>
+    <li class="ativo" routerLink="/visualizarCartoes">Cartões</li>
+    <li routerLink="/visualizarEnderecos">Endereço</li>
+    <li>Trocar senha</li>   
+  </div>
+
+  <div class="area-form">
+    
+    <div class="title">
+      <h1>Cartões de crédito</h1>  <button class="btn" routerLink="/cadastroCartao" > + Adicionar Cartão</button>
+    </div>
+    
+    <div class="cartoes">
+          <table *ngFor="let cartao of cartoes">
+            <div class="div-cartao">
+              <tr> <td> Cartão número: {{cartao.numero}} </td>
+                    <td *ngIf="cartao.padrao">Padrão</td>
+                   <td class="columbt">
+                    <button *ngIf="!cartao.padrao" (click)="setPadrao(cartao.id_cartao, usuarioLogado.id_usuario)"  class="btn-submit-pd">Definir como padrão</button>
+                    <button class="btn-danger" (click)="deletar(cartao.id_cartao)">Remover</button>
+                  </td>
+              </tr>
+           
+            </div>
+            
+          </table >    
+      
+    </div>
+  </div>
+</div>

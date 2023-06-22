@@ -1,6 +1,6 @@
 import { HomeComponent } from './../components/pages/home/home.component';
 import { environment } from './../../environments/environment';
-import { Usuario } from './../components/conta/login/usuario';
+import { Usuario } from '../model/usuario';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import jwtDecode, * as jwt_decode from 'jwt-decode';
@@ -15,13 +15,12 @@ export class LoginService {
 
   async login( user: Usuario){
     const resul = await this.http.post<any>(`${environment.baseApiUrl}/login`, user).toPromise();
-    console.log(resul.Usuario);
     if(resul && resul.token) {
       window.localStorage.setItem('usuario', JSON.stringify(resul));
       window.localStorage.setItem('token', resul.token);
       return true;
     }
-    return false;
+    return resul;
   }
 
   async createAccont(usuario: Usuario){
@@ -79,7 +78,6 @@ export class LoginService {
   logout = (): void => {
     window.localStorage.removeItem('usuario');
     window.localStorage.removeItem('token');
-   this.router.navigate(['']);
     
   
   }

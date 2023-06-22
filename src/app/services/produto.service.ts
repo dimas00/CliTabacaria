@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Produto } from '../model/Produto';
 
 import { environment } from 'src/environments/environment';
-import { Usuario } from '../components/conta/login/usuario';
+import { Usuario } from '../model/usuario';
 import { Compras } from '../model/compra';
 import { CompraForm } from '../model/compraForm';
 import { FormatWidth } from '@angular/common';
@@ -14,8 +14,6 @@ import { FormatWidth } from '@angular/common';
   providedIn: 'root'
 })
 export class ProdutoService {
-
-  
 
   private baseApiUrl = environment.baseApiUrl
   private apiUrl = `${this.baseApiUrl}`
@@ -28,11 +26,12 @@ export class ProdutoService {
 
   async cadastroProduto(formData: FormData) {
 
-   // formData.append('file', image);
-   // formData.append('produto',JSON.stringify(produto));
-    //
-
     const result = await this.http.post<any>(`${environment.baseApiUrl}/produto`, formData).toPromise();
+    return result;
+  }
+
+  async editarProduto(produto: FormData) {
+    const result = await this.http.put<any>(`${environment.baseApiUrl}/produto/editar/${produto.get('id_produto')}`, produto).toPromise();
     return result;
   }
 
@@ -53,11 +52,7 @@ export class ProdutoService {
     return this.http.get<Compras>(`${environment.baseApiUrl}/compra/getcompra/${id_usuario}`);
   }
 
-  async editarProduto(produto: Produto) {
-    const result = await this.http.put<any>(`${environment.baseApiUrl}/produto/editar/${produto.id_produto}`, produto).toPromise();
-    console.log(produto)
-    return result;
-  }
+ 
 
   async comprar(compra: CompraForm) {
     const result = await this.http.post<any>(`${environment.baseApiUrl}/compra/comprar/`, compra).toPromise();

@@ -1,5 +1,5 @@
 import { Produto } from 'src/app/model/Produto';
-import { Usuario } from './../components/conta/login/usuario';
+import { Usuario } from './usuario';
 
 
 export class Compras{
@@ -9,5 +9,7 @@ export class Compras{
     nomeprod!: string;
     quantidade!: number;
     descricao!: string;
+    image!: File ;
+    img!: string;
 
 }

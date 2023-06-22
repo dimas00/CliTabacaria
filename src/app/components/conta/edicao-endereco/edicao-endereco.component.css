@@ -1,0 +1,146 @@
+.container{
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+    height:70%;
+    width: 100%;
+}
+.menu{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin: 10% auto;
+}
+
+.menu h1{
+    font-size:23px;
+}
+.menu li{
+    font-size: 18px;
+    list-style: none;
+}
+
+
+
+.area-form{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    margin-right: 20px;
+    width: 80%;
+    display: block;
+}
+.coluna{
+    display:  flex;
+}
+
+.title{
+    display: flex ;
+    align-items: baseline;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+.title h1{
+    font-size: 25px;
+    text-align: left;
+}
+.title h2{
+    color: rgb(85, 84, 84);
+    font-size: 15px;
+
+}
+.info-perfil{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+.form{
+    padding: 2%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height:100%;
+
+}
+.form div h2{
+    color: rgb(85, 84, 84);
+
+    font-size: 20px;
+     text-align: center;
+    padding: 10px;
+}
+.form form{
+    
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    align-self: center;
+    height: 100%;
+
+}
+.form form input{
+    width: 100%;
+    border: 1px solid rgb(151, 151, 151);
+    padding: 5px;
+    border-radius: 5px;
+
+}
+.data-cvv{
+    display: flex;    
+    gap: 10px;
+
+}
+.cvv{
+    width: 40%;
+}
+
+.ativo{
+    color: red;
+}
+.botao{
+    padding: 10px ;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-submit{
+    border-radius: 3px;
+    box-shadow: 2px 2px #601F99;
+    background-color:#601F99;
+    color: white;
+    border: none; 
+    transition: ease-in-out 0.1s;
+}
+
+.btn-submit:hover{
+    border-radius: 3px;
+    box-shadow: 2px 2px #601F99;
+    background-color:white;
+    color: #601F99;
+    border: 1px solid #601F99; 
+   
+}
+.btn-voltar{
+    border-radius: 3px;
+    box-shadow: 2px 2px #601F99;
+    background-color:#7f5c9e;
+    color: white;
+    border: none; 
+    transition: ease-in-out 0.1s;
+
+}
+
+.btn-voltar:hover{
+    border-radius: 3px;
+    box-shadow: 2px 2px #601F99;
+    background-color:white;
+    color: #601F99;
+    border: 1px solid #601F99; 
+   
+}

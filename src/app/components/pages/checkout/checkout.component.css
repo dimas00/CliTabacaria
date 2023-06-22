@@ -1,0 +1,10 @@
+.container{
+    margin-top: 5%;
+    background-color: white;
+    height: 90%;
+    width: 80%;
+}
+
+.endereco{
+    border: 1px solid black;
+}

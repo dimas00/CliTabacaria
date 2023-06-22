@@ -1,0 +1,28 @@
+<app-headers></app-headers>
+<div class="container">
+
+  <div class="menu">
+    <h1>Minha conta: </h1>
+    <li  routerLink="/editarConta/{{usuarioLogado.id_usuario}}">Perfil </li>
+    <li  routerLink="/visualizarCartoes">Cartões</li>
+    <li class="ativo" routerLink="/visualizarEnderecos">Endereço</li>
+    <li>Trocar senha</li>   
+  </div>
+
+  <div class="area-form">
+    
+    <div class="title">
+      <h1>Meus endereços </h1>   <button class="button" routerLink="/cadastroEndereco" type="submit"  id="">+ Inserir novo endereço</button>
+    </div>
+    
+    <div class="main">
+      <div *ngIf="!enderecos"> Não há enderecos cadastrados!</div>
+      <div *ngFor="let endereco of enderecos" class="list-endereco">
+            <div class=header>
+              <div class="nomeCidade">
+                <div class="nome">{{endereco.nome_endereco}}</div><div class="separador"></div><div class="cidade">{{endereco.cidade}} - {{endereco.estado}}</div></div><div *ngIf="endereco.padrao"> Padrao</div><div class="div-btn"><button (click)="delete(endereco.id_endereco)" class="btn-danger">Excluir</button><button routerLink="/editarEndereco/{{endereco.id_endereco}}" class="btn-submit">Editar</button></div>
+            </div>
+            <div class="p-btn"><p>{{endereco.rua}} {{endereco.numero}} {{endereco.complemento}}, {{endereco.bairro}} - {{endereco.cep}}</p><button *ngIf="!endereco.padrao" (click)="setPadrao(endereco.id_endereco, usuarioLogado.id_usuario)"  class="btn-submit-pd">Definir como padrão</button></div>
+    </div>
+  </div>
+</div>

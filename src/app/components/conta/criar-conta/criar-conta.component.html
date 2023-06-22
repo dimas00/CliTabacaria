@@ -6,9 +6,9 @@
     
 
         <div class="form-floating">
-            <input [(ngModel)]="usuario.nome" type="email" name="email" class="form-control" id="floatingInput"  formControlName="nome" required/>
-            <label for="floatingInput">Nome</label>
-          </div>
+          <input [(ngModel)]="usuario.nome" type="text" name="nome" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="nome" required/>
+          <label for="floatingInput">Nome</label>
+        </div>
           <div *ngIf="nome.invalid && form.submitted" class="validation-error">
             <p>O Email é obrigatório</p>
           </div>
@@ -21,19 +21,32 @@
           <p>O Email é obrigatório</p>
         </div>
         <div class="form-floating">
-          <input type="password" name="senha" class="form-control" id="floatingPassword" placeholder="Senha" formControlName="senha"  [(ngModel)]="usuario.senha" required/>
+          <input  [(ngModel)]="usuario.senha" type="password" name="senha" class="form-control" id="floatingPassword" placeholder="Senha" formControlName="senha"  required/>
           <label for="floatingPassword">Senha</label>
         </div>
         <div *ngIf="senha.invalid && form.submitted" class="validation-error">
             <p>A senha é obrigatória</p>
         </div>
-        
-        
-    
+
+        <div class="form-floating">
+          <input [(ngModel)]="usuario.cpf" type="text" name="senha" class="form-control" id="floatingPassword" placeholder="CPF" formControlName="cpf"  required/>
+          <label for="floatingPassword">CPF</label>
+        </div>
+        <div *ngIf="senha.invalid && form.submitted" class="validation-error">
+            <p>O CPF é obrigatório</p>
+        </div>
+
+        <div class="form-floating">
+          <input [(ngModel)]="usuario.telefone" type="tel" name="telefone" class="form-control" id="floatingPassword" placeholder="telefone" formControlName="telefone"  required/>
+          <label for="floatingPassword">Telefone</label>
+        </div>
+        <div *ngIf="senha.invalid && form.submitted" class="validation-error">
+            <p>A senha é obrigatória</p>
+        </div>    
         <div class="checkbox mb-3">
           
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="form.form.invalid" >Criar conta</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit"  >Criar conta</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
       </form>
     </main>

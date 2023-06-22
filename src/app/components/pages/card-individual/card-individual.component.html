@@ -1,0 +1,38 @@
+<app-headers></app-headers>
+
+<div class="container">
+  <div class="main">
+   <div class="imageProduto">
+    <img routerLink="/individual/{{produto.id_produto}}" src="http://localhost:8080/TabacariaApp/produto/get_img/{{produto.img}}" >
+    </div>
+    <div class="infoContainer">
+      <div class="titleProduto">
+        <h2> {{produto.nomeprod}}</h2>
+      </div>
+        <div class="preco">
+          <h3>R$: {{produto.preco}},00</h3>
+        </div>
+      
+      <div class="frete">
+          <h1>Frete: </h1>
+        <div>Calcule o frete: <input type="number"> <input type="submit"> </div> 
+      </div>
+      <div class="quantidade">
+       Quantidade: <input type="number" min="1" max="{{produto.quantidade}}"> {{produto.quantidade}} disponivel
+      </div>
+      <div class="button" *ngIf="!isAdmin()">
+        <button   type="button" class="btn btn-sm btn-outline-secondary" >Adicionar ao carrinho</button>
+        <button routerLink="/chekout"  type="button" class="btn btn-sm btn-outline-secondary" >Comprar</button>
+  
+      </div>
+    </div>
+  </div>
+  <div class="descricao">
+
+    <h2>Descrição do produto</h2>
+    <p>{{produto.descricao}}</p>
+  </div>
+   
+</div>
+ 
+<app-footer></app-footer>

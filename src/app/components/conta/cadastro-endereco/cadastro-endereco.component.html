@@ -1,0 +1,49 @@
+<app-headers></app-headers>
+<div class="container">
+
+  <div class="menu">
+    <h1>Minha conta: </h1>
+    <li routerLink="/editarConta/{{usuarioLogado.id_usuario}}">Perfil </li>
+    <li  routerLink="/visualizarCartoes">Cartões</li>
+    <li class="ativo" routerLink="/visualizarEnderecos">Endereço</li>
+    <li>Trocar senha</li>   
+  </div>
+
+  <div class="area-form">
+    
+    <div class="title">
+      <h1 routerLink="/visualizarEnderecos"> Meus endereços</h1> <h1> / Cadastro endereço</h1>   
+    </div>
+
+    <div class="form">
+      <div>
+        <h2>Novo endereço</h2>
+      </div>
+      <form (ngSubmit)="cadastrar()" [formGroup]="cadastroEnderecoForm" #formDit="ngForm">
+
+        <div><input type="text" formControlName="nome_endereco" placeholder="Nome completo"></div>
+         <div> <input type="text" formControlName="cep" placeholder="CEP"> </div>
+        <div class="data-cvv">
+          <div class="data"><input type="text" formControlName="rua" placeholder="Rua/Avenida"></div>
+          <div  ><input class="cvv" type="text" formControlName="numero" placeholder="Número"> </div>
+        </div>
+        <div class="data-cvv">
+          <div class="data"><input type="text" formControlName="cidade" placeholder="Cidade"></div>
+          <div  ><input class="cvv" type="text" formControlName="estado" placeholder="Estado"> </div>
+        </div>
+        <div> <input type="text " formControlName="bairro" placeholder="Bairro"> </div>
+        <div> <input type="text " formControlName="complemento" placeholder="Complemento"> </div>
+        <div class="botao">
+        <div>
+          <button class="btn-voltar" routerLink="/visualizarEnderecos">Voltar</button>
+        </div>
+        <div>
+          <button class="btn-submit"  type="submit"  >+ Adicionar Endereço</button>
+        </div>
+      </div>
+      </form>
+
+    </div>
+    
+   
+</div>

@@ -2,8 +2,9 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { Usuario } from './usuario';
+import { Usuario } from '../../../model/usuario';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
    Loginform!: FormGroup;
 
   
-  constructor(private loginService: LoginService,  private router: Router) { }
+  constructor(private loginService: LoginService,  private router: Router, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.Loginform = new FormGroup({
@@ -31,12 +32,10 @@ export class LoginComponent implements OnInit {
     if (this.Loginform.valid) {
       try{
         const result = await this.loginService.login(this.usuario);
-        console.log(`Login efetuado: ${result}`);
         this.router.navigate(['']);
         
-      }catch (error){
-        alert("Usuario ou sernha incorreto");
-        console.log(error);
+      }catch (HttpError){
+        this.alertService.error('Usuario ou senha incorreto!', "Login")
       }
     }
   }

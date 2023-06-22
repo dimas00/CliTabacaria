@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Usuario } from './../../components/conta/login/usuario';
+import { Usuario } from '../../model/usuario';
 import { LoginService } from './../../services/login.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -17,6 +17,7 @@ export class HeadersComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    
   }
 
   search(e : Event): void{
@@ -32,13 +33,19 @@ export class HeadersComponent implements OnInit {
     }    
   }
 
+  refresh() {
+    this.ngOnInit();
+  }
+
   isAdmin(): boolean {
     return this.usuarioLogado.permissoes.includes('admin');
   }
 
    sair(): void  {
+
+    this.loginService.logout();
+    location.href = '';
     
-    return this.loginService.logout();
     
     
       

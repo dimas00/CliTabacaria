@@ -1,7 +1,7 @@
 import { LoginService } from './../../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Usuario } from '../login/usuario';
+import { Usuario } from '../../../model/usuario';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,6 +24,8 @@ export class CriarContaComponent implements OnInit {
       email: new FormControl(null, [Validators.required]),
       senha: new FormControl(null, [Validators.required]),
       nome: new FormControl(null, [Validators.required]),
+      cpf: new FormControl(null, [Validators.required]),
+      telefone: new FormControl(null, [Validators.required]),
     })
   }
 
@@ -47,7 +49,13 @@ export class CriarContaComponent implements OnInit {
   }
 
   get nome(){
-    return this.criarContaForm.get('senha')!;
+    return this.criarContaForm.get('nome')!;
+  }
+  get cpf(){
+    return this.criarContaForm.get('cpf')!;
+  }
+  get telefone(){
+    return this.criarContaForm.get('telefone')!;
   }
 
 

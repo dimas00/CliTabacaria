@@ -2,13 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable, NgZone, ErrorHandler } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { AlertService } from './alert.service';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService implements ErrorHandler {
 
-  constructor(private loginService: LoginService, private zone: NgZone,  private router: Router) {
+  constructor(private loginService: LoginService, private zone: NgZone,  private router: Router, private alertService: AlertService) {
   }
 
 
@@ -27,10 +29,21 @@ export class ErrorHandlerService implements ErrorHandler {
           break;
         
         case 401:
-          console.log("aqui")
-          alert("Sessão expirada");
+          this.alertService;{
+            Swal.fire({
+              icon: 'info',
+              title: 'Sessão expirada',
+              text: 'Faça login para continuar:'
+
+             
+            }).then((result) => {
+              if(result.isConfirmed){
+                 location.href = 'login'
+              }
+            })
+           }
           this.zone.run(() => this.loginService.logout());
-          this.router.navigate(['login']);
+         // this.router.navigate(['']);
 
           break;
       }

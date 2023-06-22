@@ -1,0 +1,48 @@
+<app-headers></app-headers>
+<div class="container">
+
+  <div class="menu">
+    <h1>Minha conta: </h1>
+    <li routerLink="/editarConta/{{usuarioLogado.id_usuario}}">Perfil </li>
+    <li class="ativo" routerLink="/visualizarCartoes">Cartões</li>
+    <li routerLink="/visualizarEnderecos">Endereço</li>
+    <li>Trocar senha</li>   
+  </div>
+
+  <div class="area-form">
+    
+    <div class="title">
+      <h1 routerLink="/visualizarCartoes"> Cartões de crédito </h1> <h1> / Cadastro cartão</h1>   
+    </div>
+
+    <div class="form">
+      <div>
+        <h2>Informações do cartão</h2>
+      </div>
+      <form (ngSubmit)="cadastrar()" [formGroup]="cadastroCartaoForm" #formDir="ngForm" >
+
+        <div><input [(ngModel)]="cartao.numero" type="text"  mask="0000 0000 0000 0000"   placeholder="Número do Cartão" formControlName="numero"></div>
+        <div class="data-cvv">
+          <div class="data">
+            <input [(ngModel)]="cartao.expiracao" type="text" mask="00/00/0000"placeholder="Data de Expiração"  formControlName="expiracao">
+          </div>
+        
+          <div  >
+            <input [(ngModel)]="cartao.cvv" class="cvv" type="text" mask="000" placeholder="cvv"  formControlName="cvv"> 
+          </div>
+        </div>
+        <div> <input [(ngModel)]="cartao.nome" type="text" placeholder="Nome no Cartão" formControlName="nome"> </div>
+        <div class="botao">
+        <div>
+          <button class="btn-voltar" routerLink="/visualizarCartoes">Voltar</button>
+        </div>
+        <div>
+          <button class="btn-submit"  type="submit">+ Adicionar cartão</button>
+        </div>
+      </div>
+      </form>
+
+    </div>
+    
+   
+</div>

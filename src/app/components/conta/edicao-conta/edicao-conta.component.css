@@ -1,0 +1,114 @@
+.container{
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+    height:60vh;
+}
+.menu{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin: 10% auto;
+}
+
+.menu h1{
+    font-size:23px;
+}
+.menu li{
+    font-size: 18px;
+    list-style: none;
+}
+
+
+
+.area-form{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    margin-right: 20px;
+    width: 80%;
+    display: block;
+}
+.coluna{
+    display:  flex;
+}
+
+.title{
+    padding: 10px;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+.title h1{
+    font-size: 25px;
+    text-align: left;
+}
+.title h2{
+    color: rgb(85, 84, 84);
+    font-size: 15px;
+    text-align: left;
+}
+.info-perfil{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    width: 80%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.form form{ 
+   width: 100%;
+   height: 100%;
+}
+.form table{
+    color: rgb(85, 84, 84);
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.form_label{
+    font-size: 18px;
+}
+.img-form{
+    padding: 10px;
+    border-left: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 70%;
+
+}
+
+.img-form-img{
+  
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-image: url(https://cdn-icons-png.flaticon.com/512/3106/3106921.png) ;
+    background-size: 100% 100%;
+}
+.img-form-img img{
+    width: 100%;
+    height: 100%;
+}
+.img-form-img input{
+    display: flex;
+    align-self: center;
+    width: 100%;
+}
+.ativo{
+    color: red;
+}
